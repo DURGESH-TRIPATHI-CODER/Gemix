@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyDWbADTIgi8o6jRVcnvBcbZWNcebzU3nfY";
+const API_KEY = "AIzaSyDWbADTIgi8o6jRVcnvBcbZWNcebzU3nfY"; // <<< REMEMBER TO REPLACE THIS WITH YOUR ACTUAL GEMINI API KEY
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 const chatArea = document.getElementById("chatArea");
@@ -61,7 +61,7 @@ function appendMessage(sender, text) {
     msgElement.className = `message ${sender}`;
     msgElement.innerHTML = formatMessageContent(sender, text);
     chatArea.appendChild(msgElement);
-    hljs.highlightAll();
+    hljs.highlightAll(); // Re-highlight content, especially if code blocks are present
     scrollToChatBottom();
 }
 
@@ -85,8 +85,8 @@ function updateMessageContent(messageId, newClassName, newText) {
     if (messageElement) {
         messageElement.innerHTML = formatMessageContent("Gemini", newText);
         messageElement.className = `message ${newClassName}`;
-        messageElement.removeAttribute("id");
-        hljs.highlightAll();
+        messageElement.removeAttribute("id"); // Remove the ID once content is updated
+        hljs.highlightAll(); // Re-highlight content, especially if code blocks are present
         scrollToChatBottom();
     }
 }
@@ -110,16 +110,24 @@ function formatMessageContent(sender, text) {
     const emoji = sender === "user" ? "🧑‍💻" : "🤖";
     let formattedText = text;
 
+    // Process Code Blocks first to avoid markdown within code being processed
     formattedText = formatCodeBlocks(formattedText);
 
+    // Replace newline characters with <br> for HTML line breaks, but exclude inside <pre> tags
     formattedText = formattedText.replace(/(?<!<pre[^>]*?>.*?)\n(?!.*?<\/pre>)/gs, '<br>');
 
-    formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
-    formattedText = formattedText.replace(/_([^_]+)_/g, '<u>$1</u>');
+    // Basic Markdown formatting
+    formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
+    formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');     // Italic
+    formattedText = formattedText.replace(/_([^_]+)_/g, '<u>$1</u>');     // Underline
 
+    // Basic list formatting (simple conversion, not a full markdown parser)
+    // For numbered lists
     formattedText = formattedText.replace(/<br>(\d+\.\s(.+))/g, '<br><p>$1</p>');
+    // For bulleted lists (* or -)
     formattedText = formattedText.replace(/<br>([\*\-]\s(.+))/g, '<br><p>$1</p>');
+
+    // Handle lists that appear at the very beginning of the message (no leading <br>)
     formattedText = formattedText.replace(/^(\d+\.\s(.+))/g, '<p>$1</p>');
     formattedText = formattedText.replace(/^([\*\-]\s(.+))/g, '<p>$1</p>');
 
@@ -131,12 +139,13 @@ function copyCode(button) {
   if (codeElement) {
     const codeText = codeElement.innerText;
     navigator.clipboard.writeText(codeText).then(() => {
-      button.innerHTML = '<i class="fas fa-check"></i>';
+      button.innerHTML = '<i class="fas fa-check"></i>'; // Change icon to checkmark
       setTimeout(() => {
-        button.innerHTML = '<i class="far fa-copy"></i>';
+        button.innerHTML = '<i class="far fa-copy"></i>'; // Revert to copy icon
       }, 1500);
     }).catch(err => {
       console.error('Failed to copy text:', err);
+      // Handle error, maybe revert icon immediately or show an error state
       button.innerHTML = '<i class="far fa-copy"></i>';
     });
   }

@@ -47,3 +47,4 @@ duo-studio/
 
 This project is created for educational and personal learning purposes.  
 All credit for the original design and branding belongs to [Gemini Ai ](https://gemini.google.com/app).
+

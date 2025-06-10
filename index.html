@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Gemini ai clone -dt</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemix - DT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
-        <h1 class="title">Meet <span class="gemini">Gemini</span> your personal AI assistant</h1>
+        <h1 class="title">Meet <span class="gemini">Gemix</span> your personal AI</h1>
     </header>
 
     <div class="chat-area" id="chatArea"></div>
@@ -18,11 +18,11 @@
     <div class="typing-area">
         <form class="typing-form" id="chatForm">
             <div class="input-wrapper">
-                <input id="text-input" type="text" placeholder="Ask Gemini anything..." class="input" required />
-                <button type="submit" id="send-message-button"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="text-input" class="input" placeholder="Ask Gemix anything...">
+                <button type="submit" id="send-message-button"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
+            <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">🌙</button>
         </form>
-        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
