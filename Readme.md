@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-🔗 [Visit the site on Netlify](https://gemini-clone-dt.netlify.app)
+🔗 [Visit the site on Netlify](https://gemini-ai-dt.netlify.app/)
 
 ---
 
