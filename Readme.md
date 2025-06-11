@@ -7,7 +7,7 @@
 
 ## 🌐 Live Demo
 
-🔗 [Visit the site on Netlify](gemix-ai-dt.netlify.app/)
+🔗 [Visit the site on Netlify](https://gemix-ai-dt.netlify.app/)
 
 ---
 
