@@ -1,4 +1,5 @@
-## Gemini Ai Clone 
+## Gemix
+
 
 - I've Created This Clone By Seeing the Real Gemini
 
